@@ -4,6 +4,9 @@
   <title>Sebastian Rath</title>
   
   <meta charset="UTF-8"> 
+  <meta name="theme-color" content="#1a5d8d" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#06568F" media="(prefers-color-scheme: dark)">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <meta name="description" content="Sebastian Rath - Software Engineer and Consultant">
   <meta name="author" content="Sebastian Rath">
@@ -131,7 +134,7 @@
 
   function toggleTheme() {
     const theme = localStorage.getItem("theme");
-    if (theme === 'dark') {
+    if (theme === null || theme === 'dark') {
       localStorage.setItem("theme", 'light');
     } else {
       localStorage.setItem("theme", 'dark');
