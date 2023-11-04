@@ -11,6 +11,7 @@
   <meta name="description" content="Sebastian Rath - Software Engineer and Consultant">
   <meta name="author" content="Sebastian Rath">
 
+  <link rel="preload" href="./Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="canonical" href="https://www.sebastianrath.io">
 
   <script src="https://cdn.tailwindcss.com"> 
@@ -82,6 +83,9 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="48px">
                   <defs>
                     <style>
+                      body {
+                        font-family: 'Mona Sans', sans-serif;
+                      }
                       .a {
                         fill: none;
                       }
@@ -92,6 +96,16 @@
 
                       .c {
                         fill: #008ccf;
+                      }
+
+                      @font-face {
+                          font-family: 'Mona Sans';
+                          font-display: swap;
+                          src:
+                              url('Mona-Sans.woff2') format('woff2 supports variations'),
+                              url('Mona-Sans.woff2') format('woff2-variations');
+                          font-weight: 200 900;
+                          font-stretch: 75% 125%;
                       }
                     </style>
                   </defs>
