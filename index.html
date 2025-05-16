@@ -15,7 +15,6 @@
   <link rel="canonical" href="https://www.sebastianrath.io">
 
   <script src="browser@4.js"></script>
-  </script>
   
   <style>
     html {
@@ -116,7 +115,7 @@
         <div class="border-t border-gray-500 pt-4">
           <dd class="mt-2 text-sm flex flex-row gap-x-1">
 
-            <a href="https://github.com/sebastianrath" target="_blank" title="GitHub" id="github">
+            <a href="https://github.com/sebastianrath" target="_blank" data-tippy-content="GitHub" id="github">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48px"
                 height="48px">
                 <path fill="currentColor"
@@ -124,7 +123,7 @@
               </svg>
             </a>
 
-            <a href="https://www.linkedin.com/in/sebastianrath1/" target="_blank" title="LinkedIn" id="linkedin">
+            <a href="https://www.linkedin.com/in/sebastianrath1/" target="_blank" data-tippy-content="LinkedIn" id="linkedin">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
                 <path fill="#0288d1" d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z" />
                 <path fill="#fff"
@@ -132,7 +131,7 @@
               </svg>
             </a>
 
-            <a href="https://500px.com/p/sebastianrath" target="_blank" title="500px" id="px500">
+            <a href="https://500px.com/p/sebastianrath" target="_blank" data-tippy-content="500px" id="px500">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="48px"
                 height="48px">
                 <path fill="currentColor"
@@ -140,7 +139,7 @@
               </svg>
             </a>
 
-            <a name="only" href="https://www.youtube.com/watch?v=uHgt8giw1LY" target="_blank" title="" id="onlyfans">
+            <a name="only" href="https://www.youtube.com/watch?v=uHgt8giw1LY" target="_blank" data-tippy-content="OnlyFans" id="onlyfans">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" height="48px">
                 <defs>
                   <style>
@@ -1066,31 +1065,6 @@
 
 <script>
 
-  tippy('#px500', {
-    content: "500px",
-    allowHTML: false,
-  });
-
-  tippy('#linkedin', {
-    content: "LinkedIn",
-    allowHTML: false,
-  });
-
-  tippy('#twitter', {
-    content: "Twitter",
-    allowHTML: false,
-  });
-
-  tippy('#github', {
-    content: "GitHub",
-    allowHTML: false,
-  });
-
-  tippy('#onlyfans', {
-    content: "OnlyFans",
-    allowHTML: false,
-  });
-
   let themeToSet = localStorage.getItem("theme");
   if (!themeToSet) {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -1149,8 +1123,23 @@
 
   Spotlight.init();
 
-  // Lazy Loader
   document.addEventListener("DOMContentLoaded", function () {
+
+    function initTooltips() {
+      const elementsWithTooltips = document.querySelectorAll('[data-tippy-content]');
+      for (const element of elementsWithTooltips) {
+        if (!element.dataset.tippyContent) {
+          continue;
+        }
+        const options = {
+            content: element.dataset.tippyContent,
+            placement: 'bottom',
+        };
+        Object.keys(options).forEach(key => options[key] === undefined && delete options[key]);
+        tippy(element, options);
+      }
+    }
+
     var lazyloadImages = document.querySelectorAll("img.lazy");
     var lazyloadThrottleTimeout;
 
@@ -1179,7 +1168,17 @@
     document.addEventListener("scroll", lazyload);
     window.addEventListener("resize", lazyload);
     window.addEventListener("orientationChange", lazyload);
-    lazyload();
+    try {
+      initTooltips();
+    } catch {
+      // do nothing
+    }
+
+    try {
+      lazyload();
+    } catch {
+      // do nothing
+    }
   });
 
 </script>
