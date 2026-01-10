@@ -95,10 +95,11 @@
 
   <nav class="absolute top-0 right-0 p-6 z-50 flex items-center gap-6">
     <div class="flex gap-3 text-xs md:text-sm font-mono text-gray-600 dark:text-gray-400">
-      <button onclick="setLanguage('en')" class="lang-btn active" data-lang="en">EN</button>
-      <button onclick="setLanguage('de')" class="lang-btn" data-lang="de">DE</button>
-      <button onclick="setLanguage('fr')" class="lang-btn" data-lang="fr">FR</button>
-      <button onclick="setLanguage('jp')" class="lang-btn" data-lang="jp">JP</button>
+  <button onclick="setLanguage('en')" class="lang-btn active" data-lang="en">EN</button>
+  <button onclick="setLanguage('de')" class="lang-btn" data-lang="de">DE</button>
+  <button onclick="setLanguage('fr')" class="lang-btn" data-lang="fr">FR</button>
+  <button onclick="setLanguage('jp')" class="lang-btn" data-lang="jp">JP</button>
+  <button onclick="setLanguage('ar')" class="lang-btn" data-lang="ar">AR</button>
     </div>
 
     <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Dark Mode">
@@ -246,6 +247,16 @@
         contact: "お問い合わせ",
         book_call: "通話を予約",
         no_ai: "生成AI不使用"
+      },
+      ar: {
+        greeting: "مرحباً، أنا سيباستيان راث.",
+        intro: "مهندس برمجيات ورائد أعمال تقني مقيم في",
+        bio: "تتمحور خبرتي حول لغات C++ و Go و Python و TS مع التركيز على الأجزاء الداخلية لنظم التشغيل، الحوسبة المتوازية، خطوط أنابيب البناء، هندسة المترجمات، والـ DevOps.<br><br>أحب التصوير الفوتوغرافي، اللغات، وتعلم كيفية التعبير باللهجة الفرنسية الكيبيكية بشكل صحيح.",
+        featured: "أعمال مختارة",
+        find_me: "تجدني على",
+        contact: "اتصل بي",
+        book_call: "احجز مكالمة",
+        no_ai: "بدون ذكاء اصطناعي توليدي"
       }
     };
 
@@ -258,14 +269,16 @@
           en: "Founder. Acquired by Perforce.",
           de: "Gründer. Übernommen von Perforce.",
           fr: "Fondateur. Acquis par Perforce.",
-          jp: "創設者。Perforceにより買収。"
+          jp: "創設者。Perforceにより買収。",
+          ar: "المؤسس. استحوذت عليها Perforce."
         },
         link: "https://www.perforce.com/press-releases/announcing-p4-one",
         tooltip: {
           en: "The most intuitive version control system for gaming & automotive.",
           de: "Das intuitivste Versionskontrollsystem für Gaming & Automotive.",
           fr: "Le système de contrôle de version le plus intuitif pour le jeu et l'automobile.",
-          jp: "ゲームおよび自動車業界向けの最も直感的なバージョン管理システム。"
+          jp: "ゲームおよび自動車業界向けの最も直感的なバージョン管理システム。",
+          ar: "نظام التحكم في الإصدارات الأكثر بديهية للألعاب وصناعة السيارات."
         }
       },
       {
@@ -320,7 +333,7 @@
         name: "Epic Games",
         desc: {
           en: "Former Engineer.",
-          de: "Ehemaliger Ingenieur.",
+          de: "Ehemaliger Entwickler.",
           fr: "Ancien Ingénieur.",
           jp: "元エンジニア。"
         },
@@ -336,7 +349,7 @@
         name: "Maxon",
         desc: {
           en: "Former Engineer.",
-          de: "Ehemaliger Ingenieur.",
+          de: "Ehemaliger Entwickler.",
           fr: "Ancien Ingénieur.",
           jp: "元エンジニア。"
         },
@@ -358,6 +371,19 @@
       currentLang = lang;
       localStorage.setItem('lang', lang);
 
+      // Handle RTL for Arabic
+      const htmlEl = document.documentElement;
+      if (lang === 'ar') {
+        htmlEl.setAttribute('dir', 'rtl');
+        htmlEl.lang = 'ar';
+        // Optional: Add a class to body for specific RTL CSS tweaks
+        document.body.classList.add('rtl-mode');
+      } else {
+        htmlEl.setAttribute('dir', 'ltr');
+        htmlEl.lang = lang;
+        document.body.classList.remove('rtl-mode');
+      }
+
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang][key]) {
@@ -365,12 +391,9 @@
         }
       });
 
+      // Update active button state
       document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.dataset.lang === lang) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+        btn.classList.toggle('active', btn.dataset.lang === lang);
       });
 
       renderProjects();
