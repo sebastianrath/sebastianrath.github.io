@@ -74,7 +74,6 @@
     .break-inside-avoid { break-inside: avoid; }
     
     img.lazy {
-      min-height: 250px;
       background-color: #e5e7eb;
       display: block;
     }
@@ -207,6 +206,9 @@
   </footer>
 
   <script>
+
+    const photoDimensions = {"photo48.jpg": {"w": 512, "h": 318}, "photo60.jpg": {"w": 512, "h": 226}, "photo74.jpg": {"w": 400, "h": 267}, "photo75.jpg": {"w": 512, "h": 243}, "photo61.jpg": {"w": 512, "h": 340}, "photo49.jpg": {"w": 250, "h": 167}, "photo88.jpg": {"w": 512, "h": 300}, "photo77.jpg": {"w": 350, "h": 226}, "photo63.jpg": {"w": 360, "h": 231}, "photo62.jpg": {"w": 512, "h": 250}, "photo76.jpg": {"w": 225, "h": 150}, "photo89.jpg": {"w": 350, "h": 223}, "photo99.jpg": {"w": 225, "h": 150}, "photo72.jpg": {"w": 512, "h": 325}, "photo66.jpg": {"w": 512, "h": 341}, "photo67.jpg": {"w": 225, "h": 150}, "photo73.jpg": {"w": 350, "h": 233}, "photo98.jpg": {"w": 350, "h": 233}, "photo65.jpg": {"w": 512, "h": 341}, "photo71.jpg": {"w": 512, "h": 341}, "photo59.jpg": {"w": 400, "h": 211}, "photo8.jpg": {"w": 410, "h": 512}, "photo9.jpg": {"w": 512, "h": 349}, "photo58.jpg": {"w": 341, "h": 512}, "photo70.jpg": {"w": 512, "h": 173}, "photo64.jpg": {"w": 225, "h": 150}, "photo17.jpg": {"w": 313, "h": 216}, "photo107.jpg": {"w": 300, "h": 200}, "photo113.jpg": {"w": 512, "h": 121}, "photo112.jpg": {"w": 512, "h": 328}, "photo106.jpg": {"w": 512, "h": 342}, "photo16.jpg": {"w": 512, "h": 339}, "photo28.jpg": {"w": 512, "h": 347}, "photo14.jpg": {"w": 512, "h": 132}, "photo110.jpg": {"w": 512, "h": 341}, "photo104.jpg": {"w": 512, "h": 340}, "photo105.jpg": {"w": 500, "h": 338}, "photo111.jpg": {"w": 350, "h": 235}, "photo15.jpg": {"w": 512, "h": 342}, "photo29.jpg": {"w": 512, "h": 276}, "photo11.jpg": {"w": 512, "h": 331}, "photo39.jpg": {"w": 512, "h": 341}, "photo115.jpg": {"w": 512, "h": 288}, "photo101.jpg": {"w": 187, "h": 300}, "photo100.jpg": {"w": 225, "h": 150}, "photo114.jpg": {"w": 512, "h": 209}, "photo38.jpg": {"w": 360, "h": 240}, "photo10.jpg": {"w": 360, "h": 242}, "photo12.jpg": {"w": 512, "h": 337}, "photo102.jpg": {"w": 300, "h": 200}, "photo116.jpg": {"w": 512, "h": 335}, "photo117.jpg": {"w": 189, "h": 252}, "photo103.jpg": {"w": 217, "h": 325}, "photo13.jpg": {"w": 512, "h": 341}, "photo22.jpg": {"w": 512, "h": 303}, "photo36.jpg": {"w": 497, "h": 311}, "photo37.jpg": {"w": 300, "h": 172}, "photo23.jpg": {"w": 340, "h": 512}, "photo35.jpg": {"w": 512, "h": 293}, "photo21.jpg": {"w": 340, "h": 512}, "photo119.jpg": {"w": 300, "h": 400}, "photo118.jpg": {"w": 300, "h": 426}, "photo20.jpg": {"w": 512, "h": 298}, "photo34.jpg": {"w": 350, "h": 512}, "photo30.jpg": {"w": 512, "h": 103}, "photo24.jpg": {"w": 512, "h": 305}, "photo18.jpg": {"w": 500, "h": 333}, "photo120.jpg": {"w": 252, "h": 331}, "photo108.jpg": {"w": 325, "h": 217}, "photo109.jpg": {"w": 512, "h": 234}, "photo121.jpg": {"w": 168, "h": 214}, "photo19.jpg": {"w": 512, "h": 341}, "photo25.jpg": {"w": 512, "h": 173}, "photo31.jpg": {"w": 350, "h": 257}, "photo27.jpg": {"w": 512, "h": 304}, "photo33.jpg": {"w": 300, "h": 187}, "photo123.jpg": {"w": 250, "h": 333}, "photo122.jpg": {"w": 252, "h": 189}, "photo32.jpg": {"w": 512, "h": 288}, "photo26.jpg": {"w": 342, "h": 512}, "photo82.jpg": {"w": 238, "h": 158}, "photo96.jpg": {"w": 350, "h": 233}, "photo69.jpg": {"w": 512, "h": 217}, "photo41.jpg": {"w": 512, "h": 341}, "photo55.jpg": {"w": 360, "h": 235}, "photo4.jpg": {"w": 512, "h": 235}, "photo5.jpg": {"w": 512, "h": 287}, "photo54.jpg": {"w": 512, "h": 225}, "photo40.jpg": {"w": 512, "h": 251}, "photo68.jpg": {"w": 400, "h": 265}, "photo97.jpg": {"w": 340, "h": 512}, "photo83.jpg": {"w": 512, "h": 343}, "photo95.jpg": {"w": 500, "h": 333}, "photo81.jpg": {"w": 512, "h": 191}, "photo56.jpg": {"w": 512, "h": 344}, "photo42.jpg": {"w": 512, "h": 355}, "photo7.jpg": {"w": 512, "h": 261}, "photo6.jpg": {"w": 512, "h": 344}, "photo43.jpg": {"w": 300, "h": 200}, "photo57.jpg": {"w": 193, "h": 300}, "photo80.jpg": {"w": 512, "h": 288}, "photo94.jpg": {"w": 512, "h": 341}, "photo90.jpg": {"w": 512, "h": 341}, "photo84.jpg": {"w": 512, "h": 305}, "photo53.jpg": {"w": 512, "h": 384}, "photo47.jpg": {"w": 360, "h": 249}, "photo2.jpg": {"w": 350, "h": 233}, "photo3.jpg": {"w": 512, "h": 332}, "photo46.jpg": {"w": 325, "h": 217}, "photo52.jpg": {"w": 512, "h": 326}, "photo85.jpg": {"w": 512, "h": 342}, "photo91.jpg": {"w": 512, "h": 249}, "photo87.jpg": {"w": 512, "h": 341}, "photo93.jpg": {"w": 512, "h": 341}, "photo44.jpg": {"w": 512, "h": 295}, "photo50.jpg": {"w": 512, "h": 342}, "photo78.jpg": {"w": 342, "h": 512}, "photo1.jpg": {"w": 512, "h": 266}, "photo79.jpg": {"w": 400, "h": 264}, "photo51.jpg": {"w": 500, "h": 358}, "photo45.jpg": {"w": 512, "h": 306}, "photo92.jpg": {"w": 413, "h": 512}, "photo86.jpg": {"w": 512, "h": 325}}
+
     const translations = {
       en: {
         greeting: "Salut, I am Sebastian Rath.",
@@ -437,11 +439,17 @@
       const grid = document.getElementById('photo-grid');
       let html = '';
       
-      const createPhotoItem = (num) => `
+      const createPhotoItem = (num) => {
+        const filename = `photo${num}.jpg`;
+        // fallback to 2:3 aspect ratio if dimensions arent there
+        const dim = photoDimensions[filename] || { w: 2, h: 3 };
+        
+        return `
         <div class="break-inside-avoid mb-4">
           <a href="photos/photo${num}.jpg" class="spotlight">
             <img 
-              class="w-full h-auto rounded-lg bg-gray-200 dark:bg-gray-700 lazy transition-opacity duration-500 opacity-0"
+              class="w-full rounded-lg bg-gray-200 dark:bg-gray-700 lazy transition-opacity duration-500 opacity-0"
+              style="aspect-ratio: ${dim.w} / ${dim.h};"
               data-src="photos_preview/photo${num}.jpg" 
               loading="lazy"
               alt="Photo ${num}"
@@ -449,7 +457,7 @@
             >
           </a>
         </div>
-      `;
+      `};
 
       specialPhotos.forEach(num => { html += createPhotoItem(num); });
       for(let i = 1; i <= photoCount; i++) {
