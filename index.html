@@ -402,13 +402,15 @@
     }
 
     function initLanguage() {
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
       const saved = localStorage.getItem('lang');
       const browserLang = navigator.language.slice(0, 2);
-      
+
       let target = 'en';
       if (saved && translations[saved]) target = saved;
+      else if (urlLang && translations[urlLang]) target = urlLang;
       else if (translations[browserLang]) target = browserLang;
-      
+
       setLanguage(target);
     }
 
